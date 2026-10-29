@@ -32,7 +32,7 @@ def leer_satelites(ruta: str) -> list:
         return []
 
 
-def ano_lanzamiento(registro: dict) -> int:
+def anio_lanzamiento(registro: dict) -> int:
     """
     Obtiene el año de lanzamiento del satélite a partir de los
     primeros 4 caracteres de su clave 'OBJECT_ID'
@@ -66,15 +66,15 @@ def contar_por_grupo(registros: list) -> dict:
     return conteo
 
 
-def lanzamientos_por_ano(registros: list) -> dict:
+def lanzamientos_por_anio(registros: list) -> dict:
     """
     Cuenta la cantidad de satélites activos lanzados por año
     Devuelve un diccionario 
     """
     lanzamientos = {}
     for r in registros:
-        ano = ano_lanzamiento(r)
-        lanzamientos[ano] = lanzamientos.get(ano, 0) + 1
+        anio = anio_lanzamiento(r)
+        lanzamientos[anio] = lanzamientos.get(anio, 0) + 1
     return lanzamientos
 
 
@@ -84,7 +84,7 @@ if __name__ == "__main__":
     print(f"Total registros cargados: {len(datos)}")
     
     if datos:
-        print(f"Ejemplo ano_lanzamiento (satélite 0): {ano_lanzamiento(datos[0])}")
+        print(f"Ejemplo anio_lanzamiento (satélite 0): {anio_lanzamiento(datos[0])}")
         print("Conteo por grupo:", contar_por_grupo(datos))
-        lanz = lanzamientos_por_ano(datos)
+        lanz = lanzamientos_por_anio(datos)
         print("Lanzamientos en 2024:", lanz.get(2024, 0))
